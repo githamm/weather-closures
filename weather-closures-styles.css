@@ -1,0 +1,16 @@
+p { font-family: Verdana, sans-serif; }
+h2 { font-family: Verdana, sans-serif; font-size: 30px; font-weight: bold; letter-spacing: -2px;}
+td { font-size: 15px !important; font-family: Verdana, sans-serif; }
+table { width: 100%; }
+#logo { font-family: georgia, serif; font-size: 24px; }
+#open { height: 25px; width: 65px; padding: 2.5px 0px 0px 0px; background: rgb(52, 128, 23); color: white; font-size: 13px; text-align: center; }
+#closed { height: 25px; width: 65px; padding: 2.5px 0px 0px 0px; background: rgb(159, 0, 15); color: white; font-size: 13px;  text-align: center; }
+#delayed { height: 25px; width: 65px; padding: 2.5px 0px 0px 0px; background: rgb(255, 166, 47); color: white; font-size: 13px;  text-align: center;  }
+#tbd { height: 25px; width: 65px; padding: 2.5px 0px 0px 0px; background: rgb(182, 182, 180); color: white; font-size: 13px;  text-align: center;  }
+#accident { height: 30px; width: 30px; max-width: 30px;}
+#unupdated { height: 25px; width: 65px; padding: 2.5px 0px 0px 0px; background: none; }
+#noaccident { height: 25px; width: 25px; padding: 2.5px 0px 0px 0px; background: none; }
+#text-square { height: 11px; width: 11px; padding-bottom: 1px; }
+.button.expand { margin-bottom: 3px; font-family: Verdana, sans-serif; height: 40px; padding: 10px 0px 0px 0px; }
+#button-group {margin: 0px 0px 10px 0px; }
+#question-mark { height: 30px; width: 30px; max-width: 30px; margin: 5px 0px 0px -20px; }
