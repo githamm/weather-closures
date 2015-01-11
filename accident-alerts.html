@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Denver Post Accident Alerts</title>
-    <link rel="stylesheet" href="/foundation/css/foundation.css" />
+    <link rel="stylesheet" href="foundation/css/foundation.css" />
     <link rel="stylesheet" type="text/css" href="weather-closures-styles.css" />
-    <script src="/foundation/js/vendor/modernizr.js"></script>
+    <script src="foundation/js/vendor/modernizr.js"></script>
 
     <script type='text/javascript'>
         //Write a function that allows us to add commas to raw numbers in spreadsheet for display.  2413 becomes 2,413.
@@ -44,12 +44,17 @@
                 actual_html += [
                     '<tr><td>',
                     '<a target="top" title="Website" href="', 
-                    json.feed.entry[i].gsx$website.$t, 
+                    json.feed.entry[i].gsx$alertwebsite.$t, 
                     '">', 
                     json.feed.entry[i].gsx$government.$t, 
                     '</td>',
                     '<td>',
                     json.feed.entry[i].gsx$accidentalert.$t,
+                    '</td>',
+                    '<td>',
+                    '<a href="tel:+',
+                    json.feed.entry[i].gsx$alertphone.$t,
+                    '">Call',
                     '</td>','</tr>'
                 ].join('');  
             }
@@ -75,17 +80,23 @@
     <div id="button-group">
       <div class="row">
         <div class="small-12 columns">
-          <a href="http://extras.denverpost.com/weather-closures/school-closures.html" class="button expand">Schools</a>
+          <a href="school-closures.html" class="button expand">Schools</a>
         </div>
       </div>
       <div class="row">
         <div class="small-12 columns">
-          <a href="http://extras.denverpost.com/weather-closures/government-closures.html" class="button expand">Government offices</a>
+          <a href="government-closures.html" class="button expand">Government offices</a>
         </div>
       </div>
       <div class="row">
         <div class="small-12 columns">
-          <a href="#" class="button expand">Accident alerts<span data-tooltip aria-haspopup="true" class="has-tip" title="When a municipality is on accident alert, police should be notified of an accident only if it is blocking traffic, medical attention is required, drugs or alcohol are involved, a driver flees the scene, a driver doesn't have a valid license or insurance, or public property is involved. Otherwise, drivers should exchange license, auto registration and insurance information and file an accident report as soon as possible."><img id="tooltip-icon" src="tooltip-icon.png"></span></a>          
+          <a href="#" id="live-button" class="button expand" data-reveal-id="myModal">Accident alerts<img id="tooltip-icon" src="tooltip-icon.png"></a>
+          <div id="myModal" class="reveal-modal medium" data-reveal>
+          <h3>Accident alerts</h3>
+          <p>When a municipality is on accident alert, police should be notified of an accident only if it is blocking traffic, medical attention is required, drugs or alcohol are involved, a driver flees the scene, a driver doesn't have a valid license or insurance, or public property is involved. Otherwise, drivers should exchange license, registration and insurance information and file an accident report as soon as possible.</p>
+          <p>For all municipalities, an online accident report can be filed with the Colorado State Patrol: <a href="https://crash.state.co.us/" target="_top">Colorado Online Accident Report</a>.</p>
+          <a class="close-reveal-modal">&#215;</a>
+          </div>
         </div>
       </div>
     </div>
@@ -98,8 +109,8 @@
       </div>
     </div>
     
-    <script src="/foundation/js/vendor/jquery.js"></script>
-    <script src="/foundation/js/foundation.min.js"></script>
+    <script src="foundation/js/vendor/jquery.js"></script>
+    <script src="foundation/js/foundation.min.js"></script>
     <script>
       $(document).foundation();
     </script>
