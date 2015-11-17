@@ -18,3 +18,16 @@ table { width: 100%; }
 #tooltip-icon { height: 25px; width: 25px; max-width: 25px; margin: -2px 10px 0px -50px; float: right; }
 .reveal-modal { width: 90vw !important; }
 .reveal-modal>:first-child { margin-top: 20px; }
+.social-icons {
+    height: 30px;
+    width: 30px;
+    border-radius: 50px;
+    float: right;
+    margin-right: 5px;
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+img.nav-logo {
+    height: 35px;
+    padding: 10px 25px 0px 10px;
+}
