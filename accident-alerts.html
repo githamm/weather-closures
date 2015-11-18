@@ -172,7 +172,7 @@
     </script><!-- End Google Tag Manager -->
 
     <!-- Header section -->
-    <div class="iframe-hide">
+    <div id="hide-iframe">
         <nav class="top-bar" data-topbar role="navigation">
           <ul class="title-area">
             <li class="name">
@@ -255,7 +255,7 @@
       $(document).foundation();
     </script>
 
-    <footer class="footer">
+    <footer>
     <div class="row">
     <div class="large-8 large-centered medium-10 medium-centered columns">
 
@@ -336,10 +336,15 @@
     </div>
 
     <script>
-        if ( iframe === 1 )
-        {
-            $('footer, .iframe-hide').remove()
+      // Hide Google analytics if #iframe in url
+      if ( iframe === 1 ) {
+          $('#google-analytics').remove()
         }
+        
+      // If #iframe in url, hide header section and footer
+      if ( iframe === 1 ) {
+        $('#hide-iframe, footer').addClass('hide');
+      }
     </script>
   </body>
 </html>
