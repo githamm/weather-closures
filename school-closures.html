@@ -57,8 +57,9 @@
         return x1 + x2;
     }
 
+    // SCHOOLS
     //this will be executed after we "fetch" the contents of a spreadsheet. The json parameter will hold our spreadsheet's data
-    function displayContent(json) {
+    function displayContentSchools(json) {
         //start an html table and write out our headers.  Using <td> tags so it isn't bold and centered, which is the <th> default.
         //var pre_html = '<table id = "school-closures"><tr><td>School district</td><td>Status</td></thead><tbody>';
         //same as above but gets rid of column headers
@@ -88,9 +89,77 @@
             ].join('');
         }
         //put all three of our HTML strings into our div we made at the top of the page
-        document.getElementById('school_closures_container').innerHTML = pre_html + actual_html + post_html
+        document.getElementById('school-closures-container').innerHTML = pre_html + actual_html + post_html
     }
+
+    // GOVERNMENTS
+    function displayContentGovernment(json) {
+        //start an html table and write out our headers.  Using <td> tags so it isn't bold and centered, which is the <th> default.
+        //var pre_html = '<table id = "school-closures"><tr><td>School district</td><td>Status</td></thead><tbody>';
+        //same as above but gets rid of column headers
+        var pre_html = '<table id = "government-closures"><tbody>';
+        //Create an empty string to hold the HTML. We will put table data here.
+        var actual_html = '';
+        //After we grab the table, close the HTML table.
+        var post_html = '</tbody></table>'
+        //figure out how many rows our spreadsheet has
+        var len = json.feed.entry.length
+
+        //loop through the spreadsheet, gathering data
+        for (var i = 0; i < len; i++) {
+            //for each row, add the following to actual HTML, grabbing it as a list, and then joining the list together as one long string.
+            //Uses HTML for table cells, and then grabs attributes from the spreadsheet, using appropriate syntax. Enter your table header in the Google spreadsheet between            
+            //the gsx$ and .$t.
+            actual_html += [
+                '<tr><td>',
+                '<a target="top" title="Website" href="',
+                json.feed.entry[i].gsx$govwebsite.$t,
+                '">',
+                json.feed.entry[i].gsx$government.$t,
+                '</td>',
+                '<td>',
+                json.feed.entry[i].gsx$status.$t,
+                '</td>', '</tr>'
+            ].join('');
+        }
+        //put all three of our HTML strings into our div we made at the top of the page
+        document.getElementById('government-closures-container').innerHTML = pre_html + actual_html + post_html
+    }
+
+
+    // SHOW/HIDE DIVS
+    function switchVisible() {
+        if (document.getElementById('school-closures-container')) {
+
+            if (document.getElementById('school-closures-container').style.display == 'none') {
+                document.getElementById('school-closures-container').style.display = 'block';
+                document.getElementById('government-closures-container').style.display = 'none';
+            } else {
+                document.getElementById('school-closures-container').style.display = 'none';
+                document.getElementById('government-closures-container').style.display = 'block';
+            }
+        }
+    }
+
+    // COLOR DIVS
+    // function switchColor() {
+    //     if (document.getElementById('schools-button')) {
+
+    //         if (document.getElementById('school-button').style.background = 'rgba(0,0,0,.5)') {
+    //             document.getElementById('school-button').style.background = 'rgba(159,0,15,.75)';
+    //             document.getElementById('government-button').style.background = 'rgba(0,0,0,.5)';
+    //         } else {
+    //             document.getElementById('school-button').style.background = 'rgba(0,0,0,.5)';
+    //             document.getElementById('government-button').style.background = 'rgba(159,0,15,.75)';
+    //         }
+    //     }
+    // }
     </script>
+    <!--     <style type="text/css">
+    #government-closures-container {
+        display: none;
+    }
+    </style> -->
 </head>
 
 <body>
@@ -98,7 +167,7 @@
         <div id="button-group">
             <div class="row">
                 <div class="large-8 large-centered medium-10 medium-centered columns">
-                    <a href="#" id="live-button" class="button expand" data-reveal-id="myModal">Schools<img id="tooltip-icon" src="tooltip-icon.png"></a>
+                    <a href="#" id="school-button" class="button expand" onclick="switchVisible();">Schools</a>
                     <div id="myModal" class="reveal-modal medium" data-reveal>
                         <h3>School closures</h3>
                         <p>Closures will be updated throughout the morning. In the event of a delayed start, get more information on the district or school's website by clicking its name.</p>
@@ -108,20 +177,21 @@
             </div>
             <div class="row">
                 <div class="large-8 large-centered medium-10 medium-centered columns">
-                    <a href="government-closures.html" class="button expand">Government offices</a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="large-8 large-centered medium-10 medium-centered columns">
-                    <a href="accident-alerts.html" class="button expand">Accident alerts</a>
+                    <a href="#" id="government-button" class="button expand" onclick="switchVisible();">Government offices</a>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="large-8 large-centered medium-10 medium-centered columns">
-                <div id="school_closures_container"></div>
+                <div id="school-closures-container"></div>
                 <!-- Grab the data from our google spreadsheet, using the callback to call the function we just created -->
-                <script src="https://spreadsheets.google.com/feeds/list/1nUDjqxcBArTpEA6J8944VB2hfdZlDrn03PcVsy605B8/od6/public/values?alt=json-in-script&amp;callback=displayContent" type="text/javascript"></script>
+                <script src="https://spreadsheets.google.com/feeds/list/1nUDjqxcBArTpEA6J8944VB2hfdZlDrn03PcVsy605B8/od6/public/values?alt=json-in-script&amp;callback=displayContentSchools" type="text/javascript"></script>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-8 large-centered medium-10 medium-centered columns">
+                <div id="government-closures-container"></div>
+                <script src="https://spreadsheets.google.com/feeds/list/1ND9TIzfkJJVpex9TzJMopXC51jy6AsBzk4kbkY5xHHY/od6/public/values?alt=json-in-script&amp;callback=displayContentGovernment" type="text/javascript"></script>
             </div>
         </div>
         <div class="row">
