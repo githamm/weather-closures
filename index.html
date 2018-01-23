@@ -16,7 +16,7 @@
     <meta name="description" content="List of weather-related school closures for Colorado's Front Range">
     <meta name="news_keywords" content="school closings, school closure, weather closure, blizzard, snow">
     <meta name="twitter:card" value="summary" />
-    <meta name="twitter:url" value="http://extras.denverpost.com/weather-closures/school-closures.html" />
+    <meta name="twitter:url" value="https://www.denverpost.com/denver-school-closures/" />
     <meta name="twitter:title" value="Colorado Front Range School Closures" />
     <meta name="twitter:description" value="List of weather-related school closures for Colorado's Front Range" />
     <meta name="twitter:image" value="http://extras.denverpost.com/weather-closures/school-closed.jpg" />
@@ -32,7 +32,7 @@
     <meta property="fb:app_id" content="105517551922" />
     <meta property="og:title" content="Colorado Front Range School Closures" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="http://extras.denverpost.com/weather-closures/school-closures.html" />
+    <meta property="og:url" content="https://www.denverpost.com/denver-school-closures/" />
     <meta property="og:image" content="http://extras.denverpost.com/weather-closures/school-closed.jpg" />
     <meta property="og:site_name" content="The Denver Post" />
     <meta property="og:description" content="List of weather-related school closures for Colorado's Front Range" />
@@ -40,8 +40,9 @@
     <meta name="google-site-verification" content="2bKNvyyGh6DUlOvH1PYsmKN4KRlb-0ZI7TvFtuKLeAc" />
     <!-- Style sheets -->
     <link rel="stylesheet" type="text/css" href="http://extras.denverpost.com/foundation/css/foundation.css" />
-    <link rel="stylesheet" type="text/css" href="weather-closures-styles.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
     <!-- Scripts -->
+    <script src="http://extras.denverpost.com/foundation/js/vendor/jquery.js "></script>
     <script src="http://extras.denverpost.com/foundation/js/vendor/modernizr.js"></script>
     <script type='text/javascript'>
     //Write a function that allows us to add commas to raw numbers in spreadsheet for display.  2413 becomes 2,413.
@@ -63,7 +64,7 @@
         //start an html table and write out our headers.  Using <td> tags so it isn't bold and centered, which is the <th> default.
         //var pre_html = '<table id = "school-closures"><tr><td>School district</td><td>Status</td></thead><tbody>';
         //same as above but gets rid of column headers
-        var pre_html = '<table id = "school-closures"><tbody>';
+        var pre_html = '<h2 class="table-title">Schools and districts</h2><table id = "school-closures"><tbody>';
         //Create an empty string to hold the HTML. We will put table data here.
         var actual_html = '';
         //After we grab the table, close the HTML table.
@@ -89,7 +90,7 @@
             ].join('');
         }
         //put all three of our HTML strings into our div we made at the top of the page
-        document.getElementById('school-closures-container').innerHTML = pre_html + actual_html + post_html
+        document.getElementById('school-list').innerHTML = pre_html + actual_html + post_html
     }
 
     // GOVERNMENTS
@@ -97,7 +98,7 @@
         //start an html table and write out our headers.  Using <td> tags so it isn't bold and centered, which is the <th> default.
         //var pre_html = '<table id = "school-closures"><tr><td>School district</td><td>Status</td></thead><tbody>';
         //same as above but gets rid of column headers
-        var pre_html = '<table id = "government-closures"><tbody>';
+        var pre_html = '<h2 class = "table-title">Government offices</h2><table id = "government-closures"><tbody>';
         //Create an empty string to hold the HTML. We will put table data here.
         var actual_html = '';
         //After we grab the table, close the HTML table.
@@ -123,96 +124,58 @@
             ].join('');
         }
         //put all three of our HTML strings into our div we made at the top of the page
-        document.getElementById('government-closures-container').innerHTML = pre_html + actual_html + post_html
+        document.getElementById('gov-list').innerHTML = pre_html + actual_html + post_html
     }
 
 
-    // SHOW/HIDE DIVS
-    function switchVisible() {
-        if (document.getElementById('school-closures-container')) {
-
-            if (document.getElementById('school-closures-container').style.display == 'none') {
-                document.getElementById('school-closures-container').style.display = 'block';
-                document.getElementById('government-closures-container').style.display = 'none';
-            } else {
-                document.getElementById('school-closures-container').style.display = 'none';
-                document.getElementById('government-closures-container').style.display = 'block';
-            }
-        }
-    }
-
-    // COLOR DIVS
-    // function switchColor() {
-    //     if (document.getElementById('schools-button')) {
-
-    //         if (document.getElementById('school-button').style.background = 'rgba(0,0,0,.5)') {
-    //             document.getElementById('school-button').style.background = 'rgba(159,0,15,.75)';
-    //             document.getElementById('government-button').style.background = 'rgba(0,0,0,.5)';
-    //         } else {
-    //             document.getElementById('school-button').style.background = 'rgba(0,0,0,.5)';
-    //             document.getElementById('government-button').style.background = 'rgba(159,0,15,.75)';
-    //         }
-    //     }
-    // }
+    // SHOW/HIDE LISTS
+    $(function() {
+        $('#gov-list').hide();
+        $('#toggle-button').click(function() {
+            $('#school-list').toggle();
+            $('#gov-list').toggle();
+        });
+    });
     </script>
-    <!--     <style type="text/css">
-    #government-closures-container {
-        display: none;
-    }
-    </style> -->
 </head>
 
 <body>
-    <div id="wrapper">
-        <div id="button-group">
-            <div class="row">
-                <div class="large-8 large-centered medium-10 medium-centered columns">
-                    <a href="#" id="school-button" class="button expand" onclick="switchVisible();">Schools</a>
-                    <div id="myModal" class="reveal-modal medium" data-reveal>
-                        <h3>School closures</h3>
-                        <p>Closures will be updated throughout the morning. In the event of a delayed start, get more information on the district or school's website by clicking its name.</p>
-                        <a class="close-reveal-modal">&#215;</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="large-8 large-centered medium-10 medium-centered columns">
-                    <a href="#" id="government-button" class="button expand" onclick="switchVisible();">Government offices</a>
-                </div>
-            </div>
+    <div class="row">
+        <div class="large-8 large-centered medium-10 medium-centered columns">
+            <a href="#" class="button expand" id="toggle-button">Click here to switch between<br>schools and government offices</a>
         </div>
-        <div class="row">
-            <div class="large-8 large-centered medium-10 medium-centered columns">
-                <div id="school-closures-container"></div>
-                <!-- Grab the data from our google spreadsheet, using the callback to call the function we just created -->
-                <script src="https://spreadsheets.google.com/feeds/list/1nUDjqxcBArTpEA6J8944VB2hfdZlDrn03PcVsy605B8/od6/public/values?alt=json-in-script&amp;callback=displayContentSchools" type="text/javascript"></script>
-            </div>
-        </div>
-        <div class="row">
-            <div class="large-8 large-centered medium-10 medium-centered columns">
-                <div id="government-closures-container"></div>
-                <script src="https://spreadsheets.google.com/feeds/list/1ND9TIzfkJJVpex9TzJMopXC51jy6AsBzk4kbkY5xHHY/od6/public/values?alt=json-in-script&amp;callback=displayContentGovernment" type="text/javascript"></script>
-            </div>
-        </div>
-        <div class="row">
-            <div class="large-8 large-centered medium-10 medium-centered columns">
-                <p><em>To have your school or day care center listed, please email <a href="mailto:dpo@denverpost.com?subject=Weather closures">dpo@denverpost.com</a>.</em></p>
-            </div>
-        </div>
-        <script src="http://extras.denverpost.com/foundation/js/vendor/jquery.js"></script>
-        <script src="http://extras.denverpost.com/foundation/js/foundation.min.js"></script>
-        <script>
-        $(document).foundation();
-        </script>
-        <footer>
-            <div class="row">
-                <div class="large-8 large-centered medium-10 medium-centered columns">
-                    <hr>
-                    <p>Copyright &copy; 2018 <a href="http://www.denverpost.com/">The Denver Post</a></p>
-                </div>
-            </div>
-        </footer>
     </div>
+    <div class="row">
+        <div class="large-8 large-centered medium-10 medium-centered columns">
+            <div id="school-list">
+                <!-- Grab the data from our google spreadsheet, using the callback to call the function we just created -->
+                <script src="https://spreadsheets.google.com/feeds/list/1nUDjqxcBArTpEA6J8944VB2hfdZlDrn03PcVsy605B8/od6/public/values?alt=json-in-script&amp;callback=displayContentSchools " type="text/javascript "></script>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-8 large-centered medium-10 medium-centered columns">
+            <div id="gov-list"></div>
+            <script src="https://spreadsheets.google.com/feeds/list/1ND9TIzfkJJVpex9TzJMopXC51jy6AsBzk4kbkY5xHHY/od6/public/values?alt=json-in-script&amp;callback=displayContentGovernment " type="text/javascript "></script>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-8 large-centered medium-10 medium-centered columns">
+            <p><em>To have your school or day care center listed, please email <a href="mailto:dpo@denverpost.com?subject=Weather closures ">dpo@denverpost.com</a>.</em></p>
+        </div>
+    </div>
+    <script src="http://extras.denverpost.com/foundation/js/foundation.min.js "></script>
+    <script>
+    $(document).foundation();
+    </script>
+    <footer>
+        <div class="row">
+            <div class="large-8 large-centered medium-10 medium-centered columns">
+                <hr>
+                <p>Copyright &copy; 2018 <a href="http://www.denverpost.com/ ">The Denver Post</a></p>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
