@@ -64,13 +64,14 @@
         //start an html table and write out our headers.  Using <td> tags so it isn't bold and centered, which is the <th> default.
         //var pre_html = '<table id = "school-closures"><tr><td>School district</td><td>Status</td></thead><tbody>';
         //same as above but gets rid of column headers
-        var pre_html = '<h2 class="table-title">Schools and districts</h2><table id = "school-closures"><tbody>';
+        var pre_html = '<h2 class="table-title">Schools and districts</h2><table id = "school-closures"><tbody><tr><td><em>Updated at ' + json.feed.entry[0].gsx$updated.$t + '</em></td></tr>';
         //Create an empty string to hold the HTML. We will put table data here.
         var actual_html = '';
         //After we grab the table, close the HTML table.
         var post_html = '</tbody></table>'
         //figure out how many rows our spreadsheet has
         var len = json.feed.entry.length
+        console.log(json.feed);
 
         //loop through the spreadsheet, gathering data
         for (var i = 0; i < len; i++) {
@@ -98,7 +99,7 @@
         //start an html table and write out our headers.  Using <td> tags so it isn't bold and centered, which is the <th> default.
         //var pre_html = '<table id = "school-closures"><tr><td>School district</td><td>Status</td></thead><tbody>';
         //same as above but gets rid of column headers
-        var pre_html = '<h2 class = "table-title">Government offices</h2><table id = "government-closures"><tbody>';
+        var pre_html = '<h2 class = "table-title">Government offices</h2><table id = "government-closures"><tbody><tr><td><em>Updated at ' + json.feed.entry[0].gsx$updated.$t + '</em></td></tr>';
         //Create an empty string to hold the HTML. We will put table data here.
         var actual_html = '';
         //After we grab the table, close the HTML table.
