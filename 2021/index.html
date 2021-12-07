@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Denver Area School and Government Office Closures | The Denver Post</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex,follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/zf/jq-3.3.1/dt-1.10.20/fh-3.1.6/r-2.2.3/datatables.min.css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/zf/jq-3.3.1/dt-1.10.20/fh-3.1.6/r-2.2.3/datatables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.1/papaparse.js"></script>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+    html,
+    body {
+        height: 100%;
+        width: 100%;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    td.details-control {
+        text-align: center;
+        color: forestgreen;
+        cursor: pointer;
+        font-size: 20px;
+    }
+
+    tr.shown td.details-control {
+        text-align: center;
+        color: red;
+    }
+
+    .no-caret {
+        font-size: 0;
+    }
+
+    .table-instructions {
+        color: #990012;
+        font-style: italic;
+        text-align: center;
+        font-size: .9rem;
+    }
+
+    span.dtr-title {
+        display: none !important;
+    }
+
+    table {
+        width: 100%;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    td {
+        vertical-align: bottom;
+    }
+
+    table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td.no-button:first-child:before,
+    table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th.no-button:first-child:before {
+        content: none;
+    }
+
+    table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before,
+    table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
+        top: 17px;
+        font-family: 'Roboto', sans-serif;
+        background-color: #31a354;
+    }
+
+    table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:first-child:before,
+    table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before {
+        font-family: 'Roboto', sans-serif;
+        content: '-';
+        background-color: #de2d26;
+    }
+
+    table tbody tr:nth-child(even) {
+        background-color: rgba(245, 245, 245, .7);
+    }
+
+    #expand-button {
+        /*top: 9px;
+        left: 4px;*/
+        height: 14px;
+        width: 14px;
+        display: inline-block;
+        position: absolute;
+        color: white;
+        border: 2px solid white;
+        border-radius: 14px;
+        box-shadow: 0 0 3px #444;
+        box-sizing: content-box;
+        text-align: center;
+        text-indent: 0 !important;
+        /*font-family: 'Courier New', Courier, monospace;*/
+        font-family: 'Roboto', sans-serif;
+        line-height: 14px;
+        content: '+';
+        /*background-color: #008CBA;*/
+        background-color: #31a354;
+        margin-top: 4px;
+    }
+
+    .updated {
+        margin: 5px 0 0 0;
+        font-size: .9em;
+        color: gray;
+        text-align: right;
+        font-style: italic;
+    }
+
+    .open,
+    .closed,
+    .delayed,
+    .tba,
+    .other {
+        height: 25px;
+        width: 100%;
+        min-width: 65px;
+        padding: 6px 0px 0px 0px;
+        /*background: rgb(52, 128, 23);*/
+        color: black;
+        font-weight: 500;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .open {
+        background-color: rgba(52, 128, 23, .4);
+    }
+
+    .closed {
+        background-color: rgba(159, 0, 15, .4);
+    }
+
+    .delayed {
+        background-color: rgba(255, 166, 47, .4);
+    }
+
+    .tba {
+        background-color: rgba(182, 182, 180, .4);
+    }
+
+    .other {
+        background-color: rgba(23, 52, 128, .4);
+    }
+
+    .dtr-data {
+        font-style: italic;
+    }
+
+    #toggle-button {
+        height: 60px;
+        font-style: italic;
+        font-size: 16px;
+        line-height: 18px;
+        width: 100%;
+        padding-top: 9px;
+    }
+
+    .table-title {
+
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+        margin-bottom: -8px;
+        height: 50px;
+        font-size: 26px;
+        text-transform: uppercase;
+        padding-top: 7px;
+        font-weight: 500;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="row">
+        <div class="large-4 large-centered medium-8 medium-centered small-12 columns">
+            <a href="#" class="button" id="toggle-button">Click here to switch between<br>schools and government offices</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-4 large-centered medium-8 medium-centered small-12 columns">
+            <div id="wrapper">
+                <p style="font-style:italic;display:inline-block;margin:0 4px 0 0">Click </p>
+                <div class="fa fa-caret-down" style="font-size:20px;color:forestgreen;margin-right:-20px"></div>
+                <p style="font-style:italic;display:inline;margin:0 0 0 23px"> for details; click name to go to website.</p>
+            </div>
+            <p class="updated">Updated <span id="updated-time"></span></p>
+        </div>
+    </div>
+    <div class="row" id="school-list">
+        <div class="large-4 large-centered medium-8 medium-centered small-12 columns">
+            <div class="table-title">Schools</div>
+            <table id="school-closures-table" class="display" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th class="all">Name</th>
+                        <th>Status</th>
+                        <th class="none" style="font-style: italic;"></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row" id="gov-list">
+        <div class="large-4 large-centered medium-8 medium-centered small-12 columns">
+            <div class="table-title">Government offices</div>
+            <table id="government-closures-table" class="display" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th class="all">Name</th>
+                        <th>Status</th>
+                        <th class="none" style="font-style: italic;"></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+    // SHOW/HIDE LISTS
+    $(function() {
+        $('#gov-list').hide();
+        $('#toggle-button').click(function() {
+            $('#school-list').toggle();
+            $('#gov-list').toggle();
+        });
+    });
+
+    $(document).ready(function() {
+        var sheetID = '14y1VyqPKx9rM7LJtgJHsh00nQR_X9uf2wH1TAtKxIDs';
+        var tabID = 0;
+        Papa.parse('https://docs.google.com/spreadsheets/d/' + sheetID + '/export?format=csv&id=' + sheetID + '&gid=' + tabID, {
+            download: true,
+            header: true,
+            complete: function(results) {
+                var data = results.data
+                document.getElementById('updated-time').innerHTML = data[0].Updated;
+
+                var table = $('#school-closures-table').DataTable({
+                    data: data,
+                    pageLength: 160,
+                    responsive: true,
+                    // order: [
+                    //     [1, 'asc']
+                    // ],
+                    ordering: false,
+                    //dom: '<f<t>ilp>',
+                    dom: '<t>',
+                    columns: [{
+                            className: 'details-control',
+                            ordering: false,
+                            data: null,
+                            defaultContent: '',
+                            render: function() {
+                                return '<i class="fa fa-caret-down" aria-hidden="true"></i>';
+                            },
+                            width: "15px"
+                        },
+                        {
+                            data: 'Name',
+                            render: function(data, type, row) {
+                                return '<a href="' + row.Website + '" target="_blank">' + data + '</a>'
+                            }
+                        },
+                        {
+                            data: 'Status',
+                            render: function(data, type, row) {
+                                if (data == 'Open') {
+                                    return '<div class="open">Open</div>'
+                                } else if (data == 'Closed') {
+                                    return '<div class="closed">Closed</div>'
+                                } else if (data == 'Delayed') {
+                                    return '<div class="delayed">Delayed</div>'
+                                } else if (data == 'TBA') {
+                                    return '<div class="tba">TBA</div>'
+                                } else if (data == 'Other') {
+                                    return '<div class="other">Other</div>'
+                                }
+                            }
+                        },
+                        {
+                            data: 'Details',
+                            visible: false
+                            //addClass: 'none'
+                        },
+                        { data: 'Website', visible: false },
+                        { data: 'Updated', visible: false }
+                    ],
+                    order: [
+                        [0, 'asc']
+                    ],
+                    createdRow: function(row, data, dataIndex) {
+                        if (data.Details == '') {
+                            $(row).find('td:eq(0)').removeClass('details-control');
+                            $(row).find('td:eq(0)').addClass('no-caret');
+                        }
+                    }
+                });
+
+                // Add event listener for opening and closing details
+                $('#school-closures-table tbody').on('click', 'td.details-control', function() {
+                    var tr = $(this).closest('tr');
+                    var tdi = tr.find("i.fa");
+                    var row = table.row(tr);
+
+                    if (row.child.isShown()) {
+                        // This row is already open - close it
+                        row.child.hide();
+                        tr.removeClass('shown');
+                        tdi.first().removeClass('fa-caret-up');
+                        tdi.first().addClass('fa-caret-down');
+                    } else {
+                        // Open this row
+                        row.child(format(row.data())).show();
+                        tr.addClass('shown');
+                        tdi.first().removeClass('fa-caret-down');
+                        tdi.first().addClass('fa-caret-up');
+                    }
+                });
+
+                table.on("user-select", function(e, dt, type, cell, originalEvent) {
+                    if ($(cell.node()).hasClass("details-control")) {
+                        e.preventDefault();
+                    }
+                })
+
+            }
+        })
+
+        var sheetID = '14y1VyqPKx9rM7LJtgJHsh00nQR_X9uf2wH1TAtKxIDs';
+        var tabID = 621838653;
+        Papa.parse('https://docs.google.com/spreadsheets/d/' + sheetID + '/export?format=csv&id=' + sheetID + '&gid=' + tabID, {
+            download: true,
+            header: true,
+            complete: function(results) {
+                var data = results.data
+                console.log(data);
+                document.getElementById('updated-time').innerHTML = data[0].Updated;
+
+                var table = $('#government-closures-table').DataTable({
+
+                    data: data,
+                    pageLength: 160,
+                    responsive: true,
+                    // order: [
+                    //     [1, 'asc']
+                    // ],
+                    ordering: false,
+                    //dom: '<f<t>ilp>',
+                    dom: '<t>',
+                    columns: [{
+                            className: 'details-control',
+                            ordering: false,
+                            data: null,
+                            defaultContent: '',
+                            render: function() {
+                                return '<i class="fa fa-caret-down" aria-hidden="true"></i>';
+                            },
+                            width: "15px"
+                        },
+                        {
+                            data: 'Name',
+                            render: function(data, type, row) {
+                                return '<a href="' + row.Website + '" target="_blank">' + data + '</a>'
+                            }
+                        },
+                        {
+                            data: 'Status',
+                            render: function(data, type, row) {
+                                if (data == 'Open') {
+                                    return '<div class="open">Open</div>'
+                                } else if (data == 'Closed') {
+                                    return '<div class="closed">Closed</div>'
+                                } else if (data == 'Delayed') {
+                                    return '<div class="delayed">Delayed</div>'
+                                } else if (data == 'TBA') {
+                                    return '<div class="tba">TBA</div>'
+                                } else if (data == 'Other') {
+                                    return '<div class="other">Other</div>'
+                                }
+                            }
+                        },
+                        {
+                            data: 'Details',
+                            visible: false
+                            //addClass: 'none'
+                        },
+                        { data: 'Website', visible: false },
+                        { data: 'Updated', visible: false }
+                    ],
+                    order: [
+                        [0, 'asc']
+                    ],
+                    createdRow: function(row, data, dataIndex) {
+                        if (data.Details == '') {
+                            $(row).find('td:eq(0)').removeClass('details-control');
+                            $(row).find('td:eq(0)').addClass('no-caret');
+                        }
+                    }
+                });
+
+                // Add event listener for opening and closing details
+                $('#government-closures-table tbody').on('click', 'td.details-control', function() {
+                    var tr = $(this).closest('tr');
+                    var tdi = tr.find("i.fa");
+                    var row = table.row(tr);
+
+                    if (row.child.isShown()) {
+                        // This row is already open - close it
+                        row.child.hide();
+                        tr.removeClass('shown');
+                        tdi.first().removeClass('fa-caret-up');
+                        tdi.first().addClass('fa-caret-down');
+                    } else {
+                        // Open this row
+                        row.child(format(row.data())).show();
+                        tr.addClass('shown');
+                        tdi.first().removeClass('fa-caret-down');
+                        tdi.first().addClass('fa-caret-up');
+                    }
+                });
+
+                table.on("user-select", function(e, dt, type, cell, originalEvent) {
+                    if ($(cell.node()).hasClass("details-control")) {
+                        e.preventDefault();
+                    }
+                })
+            }
+        })
+    });
+
+    function format(d) {
+
+        // `d` is the original data object for the row
+        return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+            '<tr>' +
+            '<td>' + d.Details + '</td>' +
+            '</tr>' +
+            '</table>';
+    }
+    </script>
+</body>
+
+</html>

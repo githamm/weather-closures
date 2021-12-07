@@ -1,0 +1,282 @@
+[
+  {
+    "Name": "Adams County",
+    "Status": "Delayed",
+    "Details": "And here are the details and here and here and here.",
+    "Website": "http://www.adcogov.org",
+    "Updated": "5:14 PM Nov 16"
+  },
+  {
+    "Name": "Arapahoe County",
+    "Status": "Open",
+    "Details": "",
+    "Website": "http://www.co.arapahoe.co.us/",
+    "Updated": ""
+  },
+  {
+    "Name": "Arvada",
+    "Status": "Closed",
+    "Details": "Hi! I'm some details. It's fabulous to meet you.",
+    "Website": "http://arvada.org/",
+    "Updated": ""
+  },
+  {
+    "Name": "Aurora",
+    "Status": "Open",
+    "Details": "",
+    "Website": "https://www.auroragov.org/",
+    "Updated": ""
+  },
+  {
+    "Name": "Boulder",
+    "Status": "Closed",
+    "Details": "",
+    "Website": "https://bouldercolorado.gov/",
+    "Updated": ""
+  },
+  {
+    "Name": "Boulder County",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "http://www.bouldercounty.org",
+    "Updated": ""
+  },
+  {
+    "Name": "Brighton",
+    "Status": "Open",
+    "Details": "",
+    "Website": "http://www.brightonco.gov/",
+    "Updated": ""
+  },
+  {
+    "Name": "Broomfield",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "http://www.ci.broomfield.co.us/",
+    "Updated": ""
+  },
+  {
+    "Name": "Castle Pines",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "http://www.castlepinesgov.com/",
+    "Updated": ""
+  },
+  {
+    "Name": "Castle Rock",
+    "Status": "Delayed",
+    "Details": "",
+    "Website": "http://www.crgov.com/",
+    "Updated": ""
+  },
+  {
+    "Name": "Centennial",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "http://www.centennialco.gov/",
+    "Updated": ""
+  },
+  {
+    "Name": "Cherry Hills Village",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "http://www.cherryhillsvillage.com/",
+    "Updated": ""
+  },
+  {
+    "Name": "Colorado Legislature",
+    "Status": "Delayed",
+    "Details": "Fab details would be here and here and here.",
+    "Website": "https://leg.colorado.gov/",
+    "Updated": ""
+  },
+  {
+    "Name": "Colorado Springs",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "https://coloradosprings.gov/",
+    "Updated": ""
+  },
+  {
+    "Name": "Commerce City",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "http://www.c3gov.com/",
+    "Updated": ""
+  },
+  {
+    "Name": "Denver",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "http://www.denvergov.org/",
+    "Updated": ""
+  },
+  {
+    "Name": "Douglas County",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "http://www.douglas.co.us/",
+    "Updated": ""
+  },
+  {
+    "Name": "Edgewater",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "http://edgewaterco.govoffice3.com/",
+    "Updated": ""
+  },
+  {
+    "Name": "Englewood",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "http://www.englewoodgov.org/",
+    "Updated": ""
+  },
+  {
+    "Name": "Federal Heights",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "http://www.fedheights.org/",
+    "Updated": ""
+  },
+  {
+    "Name": "Fort Collins",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "http://www.fcgov.com/",
+    "Updated": ""
+  },
+  {
+    "Name": "Glendale",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "http://www.glendale.co.us/",
+    "Updated": ""
+  },
+  {
+    "Name": "Golden",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "http://www.cityofgolden.net/",
+    "Updated": ""
+  },
+  {
+    "Name": "Greeley",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "http://greeleygov.com/",
+    "Updated": ""
+  },
+  {
+    "Name": "Highlands Ranch",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "http://hrcaonline.org/Home.aspx",
+    "Updated": ""
+  },
+  {
+    "Name": "Jefferson County",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "http://jeffco.us/",
+    "Updated": ""
+  },
+  {
+    "Name": "Lafayette",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "http://www.cityoflafayette.com/",
+    "Updated": ""
+  },
+  {
+    "Name": "Lakewood",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "https://www.lakewood.org/",
+    "Updated": ""
+  },
+  {
+    "Name": "Larimer County",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "http://www.co.larimer.co.us/",
+    "Updated": ""
+  },
+  {
+    "Name": "Littleton",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "https://www.littletongov.org/",
+    "Updated": ""
+  },
+  {
+    "Name": "Lone Tree",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "http://www.cityoflonetree.com/",
+    "Updated": ""
+  },
+  {
+    "Name": "Longmont",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "http://longmontcolorado.gov/",
+    "Updated": ""
+  },
+  {
+    "Name": "Loveland",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "http://www.cityofloveland.org",
+    "Updated": ""
+  },
+  {
+    "Name": "Northglenn",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "http://www.northglenn.org/",
+    "Updated": ""
+  },
+  {
+    "Name": "Parker",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "http://www.parkeronline.org/",
+    "Updated": ""
+  },
+  {
+    "Name": "Sheridan",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "http://www.ci.sheridan.co.us/",
+    "Updated": ""
+  },
+  {
+    "Name": "Thornton",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "http://www.cityofthornton.net/",
+    "Updated": ""
+  },
+  {
+    "Name": "Weld County",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "http://www.co.weld.co.us/",
+    "Updated": ""
+  },
+  {
+    "Name": "Westminster",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "http://www.ci.westminster.co.us/",
+    "Updated": ""
+  },
+  {
+    "Name": "Wheat Ridge",
+    "Status": "TBA",
+    "Details": "",
+    "Website": "http://www.ci.wheatridge.co.us/",
+    "Updated": ""
+  }
+]

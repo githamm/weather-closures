@@ -1,0 +1,118 @@
+body {
+    background: #fafafa;
+}
+
+p {
+    font-family: Verdana, sans-serif;
+}
+
+h2 {
+    font-family: Verdana, sans-serif;
+    font-size: 29px;
+    font-weight: bold;
+    letter-spacing: -2px;
+}
+
+h3 {
+    font-family: Verdana, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0px;
+}
+
+.table-title {
+    font-size: 24px;
+    letter-spacing: -1px;
+    text-align: center;
+}
+
+td {
+    font-size: 15px !important;
+    font-family: Verdana, sans-serif;
+}
+
+table {
+    width: 100%;
+}
+
+#logo {
+    font-family: georgia, serif;
+    font-size: 24px;
+}
+
+#open {
+    height: 25px;
+    width: 100%;
+    min-width: 65px;
+    padding: 2.5px 0px 0px 0px;
+    background: rgb(52, 128, 23);
+    color: white;
+    font-size: 13px;
+    text-align: center;
+}
+
+#closed {
+    height: 25px;
+    width: 100%;
+    min-width: 65px;
+    padding: 2.5px 0px 0px 0px;
+    background: rgb(159, 0, 15);
+    color: white;
+    font-size: 13px;
+    text-align: center;
+}
+
+#delayed {
+    height: 25px;
+    width: 100%;
+    min-width: 65px;
+    padding: 2.5px 0px 0px 0px;
+    background: rgb(255, 166, 47);
+    color: white;
+    font-size: 13px;
+    text-align: center;
+}
+
+#tbd {
+    height: 25px;
+    width: 100%;
+    min-width: 65px;
+    padding: 2.5px 0px 0px 0px;
+    background: rgb(182, 182, 180);
+    color: white;
+    font-size: 13px;
+    text-align: center;
+}
+
+#accident {
+    height: 35px;
+    width: 35px;
+    max-width: 35px;
+}
+
+#unupdated {
+    height: 25px;
+    width: 65px;
+    padding: 2.5px 0px 0px 0px;
+    background: none;
+}
+
+#text-square {
+    height: 11px;
+    width: 11px;
+    padding-bottom: 1px;
+}
+
+.button.expand {
+    margin-bottom: 3px;
+    font-family: Verdana, sans-serif;
+    height: 40px;
+    padding: 10px 0px 0px 0px;
+}
+
+#toggle-button {
+    background: #8e1024;
+    margin-top: 10px;
+    height: 60px;
+    font-style: italic;
+}
