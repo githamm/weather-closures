@@ -5,8 +5,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Colorado Front Range School Closures</title>
-    <link rel="canonical" href="http://extras.denverpost.com/weather-closures/school-closures.html" />
-    <link rel="shortcut icon" href="http://extras.mnginteractive.com/live/media/favIcon/dpo/favicon.ico" type="image/x-icon" />
+    <link rel="canonical" href="https://extras.denverpost.com/weather-closures/school-closures.html" />
+    <link rel="shortcut icon" href="https://extras.mnginteractive.com/live/media/favIcon/dpo/favicon.ico" type="image/x-icon" />
     <meta name="distribution" content="global" />
     <meta name="robots" content="index, nofollow" />
     <meta name="title" content="Colorado Front Range School Closures" />
@@ -19,7 +19,7 @@
     <meta name="twitter:url" value="https://www.denverpost.com/denver-school-closures/" />
     <meta name="twitter:title" value="Colorado Front Range School Closures" />
     <meta name="twitter:description" value="List of weather-related school closures for Colorado's Front Range" />
-    <meta name="twitter:image" value="http://extras.denverpost.com/weather-closures/school-closed.jpg" />
+    <meta name="twitter:image" value="https://extras.denverpost.com/weather-closures/school-closed.jpg" />
     <meta name="twitter:site" value="@denverpost" />
     <meta name="twitter:domain" value="denverpost.com" />
     <meta name="twitter:creator" content="@DenverPost">
@@ -33,17 +33,17 @@
     <meta property="og:title" content="Colorado Front Range School Closures" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://www.denverpost.com/denver-school-closures/" />
-    <meta property="og:image" content="http://extras.denverpost.com/weather-closures/school-closed.jpg" />
+    <meta property="og:image" content="https://extras.denverpost.com/weather-closures/school-closed.jpg" />
     <meta property="og:site_name" content="The Denver Post" />
     <meta property="og:description" content="List of weather-related school closures for Colorado's Front Range" />
     <meta property="article:publisher" content="https://www.facebook.com/denverpost" />
     <meta name="google-site-verification" content="2bKNvyyGh6DUlOvH1PYsmKN4KRlb-0ZI7TvFtuKLeAc" />
     <!-- Style sheets -->
-    <link rel="stylesheet" type="text/css" href="http://extras.denverpost.com/foundation/css/foundation.css" />
+    <link rel="stylesheet" type="text/css" href="https://extras.denverpost.com/foundation/css/foundation.css" />
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <!-- Scripts -->
-    <script src="http://extras.denverpost.com/foundation/js/vendor/jquery.js "></script>
-    <script src="http://extras.denverpost.com/foundation/js/vendor/modernizr.js"></script>
+    <script src="https://extras.denverpost.com/foundation/js/vendor/jquery.js "></script>
+    <script src="https://extras.denverpost.com/foundation/js/vendor/modernizr.js"></script>
     <script type='text/javascript'>
     //Write a function that allows us to add commas to raw numbers in spreadsheet for display.  2413 becomes 2,413.
     function addCommas(nStr) {
@@ -64,13 +64,14 @@
         //start an html table and write out our headers.  Using <td> tags so it isn't bold and centered, which is the <th> default.
         //var pre_html = '<table id = "school-closures"><tr><td>School district</td><td>Status</td></thead><tbody>';
         //same as above but gets rid of column headers
-        var pre_html = '<h2 class="table-title">Schools and districts</h2><table id = "school-closures"><tbody>';
+        var pre_html = '<h2 class="table-title">Schools and districts</h2><table id = "school-closures"><tbody><tr><td><em>Updated at ' + json.feed.entry[0].gsx$updated.$t + '</em></td></tr>';
         //Create an empty string to hold the HTML. We will put table data here.
         var actual_html = '';
         //After we grab the table, close the HTML table.
         var post_html = '</tbody></table>'
         //figure out how many rows our spreadsheet has
         var len = json.feed.entry.length
+        // console.log(json.feed);
 
         //loop through the spreadsheet, gathering data
         for (var i = 0; i < len; i++) {
@@ -98,7 +99,7 @@
         //start an html table and write out our headers.  Using <td> tags so it isn't bold and centered, which is the <th> default.
         //var pre_html = '<table id = "school-closures"><tr><td>School district</td><td>Status</td></thead><tbody>';
         //same as above but gets rid of column headers
-        var pre_html = '<h2 class = "table-title">Government offices</h2><table id = "government-closures"><tbody>';
+        var pre_html = '<h2 class = "table-title">Government offices</h2><table id = "government-closures"><tbody><tr><td><em>Updated at ' + json.feed.entry[0].gsx$updated.$t + '</em></td></tr>';
         //Create an empty string to hold the HTML. We will put table data here.
         var actual_html = '';
         //After we grab the table, close the HTML table.
@@ -164,7 +165,7 @@
             <p><em>To have your school or day care center listed, please email <a href="mailto:dpo@denverpost.com?subject=Weather closures ">dpo@denverpost.com</a>.</em></p>
         </div>
     </div>
-    <script src="http://extras.denverpost.com/foundation/js/foundation.min.js "></script>
+    <script src="https://extras.denverpost.com/foundation/js/foundation.min.js "></script>
     <script>
     $(document).foundation();
     </script>
@@ -172,7 +173,7 @@
         <div class="row">
             <div class="large-8 large-centered medium-10 medium-centered columns">
                 <hr>
-                <p>Copyright &copy; 2018 <a href="http://www.denverpost.com/ ">The Denver Post</a></p>
+                <p>Copyright &copy; 2019 <a href="http://www.denverpost.com/ ">The Denver Post</a></p>
             </div>
         </div>
     </footer>
